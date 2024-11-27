@@ -54,3 +54,4 @@ class Solution:
         
 solution = Solution()
 print(solution.mergeAlternately("ace", "bdf"))
+
