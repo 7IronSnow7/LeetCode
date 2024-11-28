@@ -53,5 +53,5 @@ class Solution:
         return combined_words
         
 solution = Solution()
-print(solution.mergeAlternately("ace", "bdf"))
+print(solution.mergeAlternately("ace", "bdfg"))
 
