@@ -1,3 +1,4 @@
+# 1768. Merge String Alternately
 #______________________
 #      INFORMATION
 #______________________
