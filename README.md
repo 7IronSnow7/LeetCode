@@ -3,7 +3,7 @@
 LeetCode Algorithm  
 (Notes: "🔒" means you need to buy a book from Leetcode)
 
-| #   | Title                                             | Solution          | Difficulty |
+| #   | Title.                                             | Solution          | Difficulty |
 |-----|---------------------------------------------------|-------------------|------------|
 | 13| Roman To Integer                        | [Python](https://github.com/7IronSnow7/LeetCode/blob/main/13_Roman_To_Integer.py)           | Easy       |
 | 392| Is Subsequence                        | [Python](https://github.com/7IronSnow7/LeetCode/blob/main/392_Is_Subsequence.py)           | Easy       |
