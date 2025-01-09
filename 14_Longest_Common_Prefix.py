@@ -21,3 +21,18 @@ Explanation: There is no common prefix among the input strings.
 #______________________
 #      SOLUTION
 #______________________
+from typing import List
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        prefix = ""
+        for c in zip(*strs):
+            if len(set(c)) == 1:
+                prefix += c[0]
+            else:
+                break
+        
+        return prefix
+    
+solution = Solution()
+print(solution.longestCommonPrefix(["flower", "flow", "flight"]))
+print(solution.longestCommonPrefix(["dog", "racecar", "car"]))
