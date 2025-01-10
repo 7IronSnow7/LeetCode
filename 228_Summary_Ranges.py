@@ -64,15 +64,25 @@ Explanation: The ranges are:
 # solution = Solution()
 # print(solution.summaryRanges([0,1,2,4,5,7]))
 # print(solution.summaryRanges([0,2,3,4,6,8,9]))
+# import functools
+
+# def find_longest(word_so_far, next_word):
+#     # Your code here - compare lengths and return the longer word
+#     if len(word_so_far) < len(next_word):
+#         return next_word
+#     return word_so_far
+
+# words = ["cat", "elephant", "mouse", "hippopotamus", "dog"]
+# longest_word = functools.reduce(find_longest, words)
+# print(longest_word)
+# # Use reduce to find the longest word
 import functools
 
-def find_longest(word_so_far, next_word):
-    # Your code here - compare lengths and return the longer word
-    if len(word_so_far) < len(next_word):
-        return next_word
-    return word_so_far
+def concat_with_separator(accumulated, next_string, sep=" | "):
+    # Your code here - join strings with separator
+    return accumulated + sep + next_string
 
-words = ["cat", "elephant", "mouse", "hippopotamus", "dog"]
-longest_word = functools.reduce(find_longest, words)
-print(longest_word)
-# Use reduce to find the longest word
+strings = ["hello", "world", "python"]
+# Use reduce to join them
+joined_strings = functools.reduce(concat_with_separator, strings)
+print(joined_strings)
