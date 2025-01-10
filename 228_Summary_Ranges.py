@@ -76,13 +76,48 @@ Explanation: The ranges are:
 # longest_word = functools.reduce(find_longest, words)
 # print(longest_word)
 # # Use reduce to find the longest word
+# import functools
+
+# def concat_with_separator(accumulated, next_string, sep=" | "):
+#     # Your code here - join strings with separator
+#     return accumulated + sep + next_string
+
+# strings = ["hello", "world", "python"]
+# # Use reduce to join them
+# joined_strings = functools.reduce(concat_with_separator, strings)
+# print(joined_strings)
+# import functools
+
+# def find_max(max_so_far, next_num):
+#     # Your code here - compare and return larger number
+#     if max_so_far < next_num:
+#         return next_num
+#     return max_so_far
+
+# numbers = [5, 12, 3, 8, 9, 1]
+# # Use reduce to find max
+# max_number = functools.reduce(find_max, numbers)
+# print(max_number)
+
 import functools
 
-def concat_with_separator(accumulated, next_string, sep=" | "):
-    # Your code here - join strings with separator
-    return accumulated + sep + next_string
+books = [
+    {"title": "The Hobbit", "author": "Tolkien", "pages": 295},
+    {"title": "Dune", "author": "Herbert", "pages": 412},
+    {"title": "The Guide", "author": "Adams", "pages": 224},
+    {"title": "Snow Crash", "author": "Stephenson", "pages": 470},
+]
 
-strings = ["hello", "world", "python"]
-# Use reduce to join them
-joined_strings = functools.reduce(concat_with_separator, strings)
-print(joined_strings)
+def find_longest_book(book_so_far, next_book): 
+    # Your code here!
+    if book_so_far["pages"] < next_book["pages"]:
+        return next_book
+    return book_so_far
+
+most_pages = functools.reduce(find_longest_book, books[1:], books[0])
+print(most_pages)
+
+    # Compare pages and return the book with more pages
+    # But be careful! book_so_far will be a dictionary
+
+# Should output something like: "Snow Crash by Stephenson (470 pages)"
