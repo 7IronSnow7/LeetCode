@@ -37,30 +37,42 @@ Explanation: The ranges are:
 #______________________
 #      SOLUTION
 #______________________
-class Solution:
-    def summaryRanges(self, nums: List[int]) -> List[str]:
-        # handle empty array
-        if not nums:
-            return []
+# class Solution:
+#     def summaryRanges(self, nums: List[int]) -> List[str]:
+#         # handle empty array
+#         if not nums:
+#             return []
 
-        result = []
-        start = nums[0]
+#         result = []
+#         start = nums[0]
 
-        for i in range(len(nums)):
-            # Check if we are at the end or if there is a gap
-            if i == len(nums) - 1 or nums[i+1] - nums[i] > 1:
-                # If start and current number are the same
-                if start == nums[i]:
-                    result.append(str(start))
-                # If we have a sequence
-                else:
-                    result.append(f"{start}->{nums[i]}")
+#         for i in range(len(nums)):
+#             # Check if we are at the end or if there is a gap
+#             if i == len(nums) - 1 or nums[i+1] - nums[i] > 1:
+#                 # If start and current number are the same
+#                 if start == nums[i]:
+#                     result.append(str(start))
+#                 # If we have a sequence
+#                 else:
+#                     result.append(f"{start}->{nums[i]}")
 
-                # Start new sequence if not at the end 
-                if i < len(nums) - 1:
-                    start = nums[i +1]
+#                 # Start new sequence if not at the end 
+#                 if i < len(nums) - 1:
+#                     start = nums[i +1]
         
-        return result
-solution = Solution()
-print(solution.summaryRanges([0,1,2,4,5,7]))
-print(solution.summaryRanges([0,2,3,4,6,8,9]))
+#         return result
+# solution = Solution()
+# print(solution.summaryRanges([0,1,2,4,5,7]))
+# print(solution.summaryRanges([0,2,3,4,6,8,9]))
+import functools
+
+def find_longest(word_so_far, next_word):
+    # Your code here - compare lengths and return the longer word
+    if len(word_so_far) < len(next_word):
+        return next_word
+    return word_so_far
+
+words = ["cat", "elephant", "mouse", "hippopotamus", "dog"]
+longest_word = functools.reduce(find_longest, words)
+print(longest_word)
+# Use reduce to find the longest word
