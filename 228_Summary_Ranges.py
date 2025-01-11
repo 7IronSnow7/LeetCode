@@ -99,25 +99,51 @@ Explanation: The ranges are:
 # max_number = functools.reduce(find_max, numbers)
 # print(max_number)
 
-import functools
+# import functools
 
-books = [
-    {"title": "The Hobbit", "author": "Tolkien", "pages": 295},
-    {"title": "Dune", "author": "Herbert", "pages": 412},
-    {"title": "The Guide", "author": "Adams", "pages": 224},
-    {"title": "Snow Crash", "author": "Stephenson", "pages": 470},
-]
+# books = [
+#     {"title": "The Hobbit", "author": "Tolkien", "pages": 295},
+#     {"title": "Dune", "author": "Herbert", "pages": 412},
+#     {"title": "The Guide", "author": "Adams", "pages": 224},
+#     {"title": "Snow Crash", "author": "Stephenson", "pages": 470},
+# ]
 
-def find_longest_book(book_so_far, next_book): 
-    # Your code here!
-    if book_so_far["pages"] < next_book["pages"]:
-        return next_book
-    return book_so_far
+# def find_longest_book(book_so_far, next_book): 
+#     # Your code here!
+#     if book_so_far["pages"] < next_book["pages"]:
+#         return next_book
+#     return book_so_far
 
-most_pages = functools.reduce(find_longest_book, books[1:], books[0])
-print(most_pages)
+# most_pages = functools.reduce(find_longest_book, books[1:], books[0])
+# print(most_pages)
 
     # Compare pages and return the book with more pages
     # But be careful! book_so_far will be a dictionary
 
 # Should output something like: "Snow Crash by Stephenson (470 pages)"
+
+import functools
+
+shopping_cart = [
+    {"item": "book", "price": 10.00, "quantity": 2},
+    {"item": "pen", "price": 5.00, "quantity": 4},
+    {"item": "notebook", "price": 15.00, "quantity": 3},
+    {"item": "eraser", "price": 2.00, "quantity": 5}
+]
+
+def calculate_total(total_so_far, next_item):
+    # Work with just the next_item, not the whole shopping cart
+    print(f"Processing item: {next_item['item']}")
+    print(f"Quantity: {next_item['quantity']}")
+    
+    if next_item["quantity"] > 3:
+        discount = next_item["price"] * 0.1  # 10% discount (0.1 instead of 0.3)
+        item_total = (next_item["price"] - discount) * next_item["quantity"]
+    else:
+        item_total = next_item["price"] * next_item["quantity"]
+    
+    return total_so_far + item_total
+
+# Start with 0 as initial value
+total = functools.reduce(calculate_total, shopping_cart, 0)
+print(f"Final total: {total}")
