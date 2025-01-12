@@ -37,113 +37,33 @@ Explanation: The ranges are:
 #______________________
 #      SOLUTION
 #______________________
-# class Solution:
-#     def summaryRanges(self, nums: List[int]) -> List[str]:
-#         # handle empty array
-#         if not nums:
-#             return []
+from typing import List
+class Solution:
+    def summaryRanges(self, nums: List[int]) -> List[str]:
+        # handle empty array
+        if not nums:
+            return []
 
-#         result = []
-#         start = nums[0]
+        result = []
+        start = nums[0]
 
-#         for i in range(len(nums)):
-#             # Check if we are at the end or if there is a gap
-#             if i == len(nums) - 1 or nums[i+1] - nums[i] > 1:
-#                 # If start and current number are the same
-#                 if start == nums[i]:
-#                     result.append(str(start))
-#                 # If we have a sequence
-#                 else:
-#                     result.append(f"{start}->{nums[i]}")
+        for i in range(len(nums)):
+            # Check if we are at the end or if there is a gap
+            if i == len(nums) - 1 or nums[i+1] - nums[i] > 1:
+                # If start and current number are the same
+                if start == nums[i]:
+                    result.append(str(start))
+                # If we have a sequence
+                else:
+                    result.append(f"{start}->{nums[i]}")
 
-#                 # Start new sequence if not at the end 
-#                 if i < len(nums) - 1:
-#                     start = nums[i +1]
+                # Start new sequence if not at the end 
+                if i < len(nums) - 1:
+                    start = nums[i +1]
         
-#         return result
-# solution = Solution()
-# print(solution.summaryRanges([0,1,2,4,5,7]))
-# print(solution.summaryRanges([0,2,3,4,6,8,9]))
-# import functools
-
-# def find_longest(word_so_far, next_word):
-#     # Your code here - compare lengths and return the longer word
-#     if len(word_so_far) < len(next_word):
-#         return next_word
-#     return word_so_far
-
-# words = ["cat", "elephant", "mouse", "hippopotamus", "dog"]
-# longest_word = functools.reduce(find_longest, words)
-# print(longest_word)
-# # Use reduce to find the longest word
-# import functools
-
-# def concat_with_separator(accumulated, next_string, sep=" | "):
-#     # Your code here - join strings with separator
-#     return accumulated + sep + next_string
-
-# strings = ["hello", "world", "python"]
-# # Use reduce to join them
-# joined_strings = functools.reduce(concat_with_separator, strings)
-# print(joined_strings)
-# import functools
-
-# def find_max(max_so_far, next_num):
-#     # Your code here - compare and return larger number
-#     if max_so_far < next_num:
-#         return next_num
-#     return max_so_far
-
-# numbers = [5, 12, 3, 8, 9, 1]
-# # Use reduce to find max
-# max_number = functools.reduce(find_max, numbers)
-# print(max_number)
-
-# import functools
-
-# books = [
-#     {"title": "The Hobbit", "author": "Tolkien", "pages": 295},
-#     {"title": "Dune", "author": "Herbert", "pages": 412},
-#     {"title": "The Guide", "author": "Adams", "pages": 224},
-#     {"title": "Snow Crash", "author": "Stephenson", "pages": 470},
-# ]
-
-# def find_longest_book(book_so_far, next_book): 
-#     # Your code here!
-#     if book_so_far["pages"] < next_book["pages"]:
-#         return next_book
-#     return book_so_far
-
-# most_pages = functools.reduce(find_longest_book, books[1:], books[0])
-# print(most_pages)
-
-    # Compare pages and return the book with more pages
-    # But be careful! book_so_far will be a dictionary
-
-# Should output something like: "Snow Crash by Stephenson (470 pages)"
-
+        return result
+solution = Solution()
+print(solution.summaryRanges([0,1,2,4,5,7]))
+print(solution.summaryRanges([0,2,3,4,6,8,9]))
 import functools
 
-shopping_cart = [
-    {"item": "book", "price": 10.00, "quantity": 2},
-    {"item": "pen", "price": 5.00, "quantity": 4},
-    {"item": "notebook", "price": 15.00, "quantity": 3},
-    {"item": "eraser", "price": 2.00, "quantity": 5}
-]
-
-def calculate_total(total_so_far, next_item):
-    # Work with just the next_item, not the whole shopping cart
-    print(f"Processing item: {next_item['item']}")
-    print(f"Quantity: {next_item['quantity']}")
-    
-    if next_item["quantity"] > 3:
-        discount = next_item["price"] * 0.1  # 10% discount (0.1 instead of 0.3)
-        item_total = (next_item["price"] - discount) * next_item["quantity"]
-    else:
-        item_total = next_item["price"] * next_item["quantity"]
-    
-    return total_so_far + item_total
-
-# Start with 0 as initial value
-total = functools.reduce(calculate_total, shopping_cart, 0)
-print(f"Final total: {total}")
